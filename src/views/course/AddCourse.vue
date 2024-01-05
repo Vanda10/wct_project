@@ -15,6 +15,10 @@
             <input v-model="newCourse.coursename" class="form-control" />
           </div>
 
+  
+          <button @click="addCourse" class="btn w-[150px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+            Add Course
+          </button>
         </div>
       </div>
     </div>
