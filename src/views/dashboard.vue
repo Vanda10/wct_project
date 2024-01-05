@@ -9,7 +9,7 @@
 
       <!-- Center the heading -->
       <div class="flex items-center justify-center mb-4">
-        <h3 class="text-lg font-medium text-gray-900">Universities Statistics</h3>
+        <h3 class="text-lg font-medium text-gray-900">Universities Data</h3>
         <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20"></svg>
       </div>
       

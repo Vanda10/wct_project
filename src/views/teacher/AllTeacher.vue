@@ -2,18 +2,20 @@
   <div class="main-content ml-[300px] p-8">
     <!-- First row -->
     <div class="flex justify-between">
-      <p class="mt-2 ml-7">Teachers</p>
+      <p class="mt-3 ml-3 font-bold text-m">Teachers</p>
+      <router-link to="/add-teacher">
       <button
         type="button"
         class="btn text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
       >
         <i class="bi bi-pencil-square"></i> Add Teacher
       </button>
+    </router-link>
     </div>
 
     <!-- Second row -->
     <div class="flex justify-center mt-3">
-      <div class="ml-5 p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-200 text-black flex-grow">
+      <div class=" p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-200 text-black flex-grow">
         <i class="bi bi-search text-sm"></i>
         <input
           v-model="searchQuery"
@@ -26,7 +28,7 @@
     </div>
 
     <!-- Third row table -->
-    <table class="table table-striped mt-10">
+    <table class="table table-striped mt-2">
       <thead>
         <tr>
           <th scope="col">ID</th>

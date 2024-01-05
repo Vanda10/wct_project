@@ -46,9 +46,12 @@
           <label class="block text-[#183D5C] mb-1">Year</label>
           <input v-model="newStudent.year" class="form-control" />
         </div>
+
+        <router-link to="/add-student">
         <button @click="addStudent" class="btn w-[150px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
           Add Student
         </button>
+      </router-link>
       </div>
     </div>
   </div>
