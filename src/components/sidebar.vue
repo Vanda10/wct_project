@@ -94,12 +94,7 @@
           Class list
         </router-link>
       </h1>
-      <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/add-class">
-          <i class="bi bi-caret-right-fill"></i>
-          Add class
-        </router-link>
-      </h1>
+
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/manage-class">
           <i class="bi bi-caret-right-fill"></i>
@@ -131,12 +126,12 @@
           Add course
         </router-link>
       </h1>
-      <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
+      <!-- <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/assign-course">
           <i class="bi bi-caret-right-fill"></i>
           Assign Course
         </router-link>
-      </h1>
+      </h1> -->
     </div>
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100" @click="onLogout">
       <i class="bi bi-box-arrow-in-right"></i>

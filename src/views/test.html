@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            height: 100px;
+        }
+
+        .event {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Class Schedule</h1>
+
+<table id="classSchedule">
+    <thead>
+        <tr>
+            <th>Time/Day</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Replace the following rows with your actual class schedule data -->
+        <tr>
+            <td>7:00</td>
+            <td class="event" ondblclick="editClass(this)">Classic 1</td>
+            <td ondblclick="addClass(this)"></td>
+            <!-- Add more classes as needed -->
+        </tr>
+        <tr>
+            <td>8:00</td>
+            <td ondblclick="addClass(this)"></td>
+            <!-- Add more classes as needed -->
+        </tr>
+        <tr>
+            <td>9:00</td>
+            <td ondblclick="addClass(this)"></td>
+            <!-- Add more classes as needed -->
+        </tr>
+        <!-- Add more rows as needed for different times -->
+    </tbody>
+</table>
+
+<script>
+    function editClass(cell) {
+        var className = prompt("Enter the class name:", cell.innerText);
+        if (className !== null) {
+            cell.innerText = className;
+        }
+    }
+
+    function addClass(cell) {
+        var className = prompt("Enter the class name:");
+        if (className !== null) {
+            cell.innerText = className;
+            cell.classList.add("event");
+        }
+    }
+</script>
+
+</body>
+</html>
+

@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.10",
+    "@fullcalendar/vue3": "^6.1.10",
     "@supabase/supabase-js": "^2.39.2",
     "axios": "^1.6.4",
+    "fullcalendar": "^6.1.10",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },

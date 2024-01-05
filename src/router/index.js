@@ -17,6 +17,8 @@ import AssignCourse from '../views/course/AssignCourse.vue';
 import CourseDetail from '../views/course/CourseDetail.vue';
 import Login from "../views/LoginForm.vue";
 import AdminPage from"../views/AdminPage.vue";
+import StudentPage from"../views/StudentPage.vue";
+import Schedule from '../views/class/Schedule.vue';
 
 const routes = [
   { path: '/', 
@@ -31,8 +33,8 @@ const routes = [
       { path: '/add-student', component: AddStudent },
       { path: '/student-detail/:id', name: 'student_detail', component: StudentDetail },
       { path: '/all-class', component: AllClass },
-      { path: '/add-class', component: AddClass },
-      { path: '/manage-class', component: ManageClass },
+      // { path: '/add-class', component: AddClass },
+      { path: '/manage-class', component: Schedule},
       { path: '/add-course', component: AddCourse },
       { path: '/all-course', component: AllCourse },
       { path: '/assign-course', component: AssignCourse },
