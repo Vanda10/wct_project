@@ -44,7 +44,7 @@
             <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20"></svg>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-900">Students</p>
-              <p class="text-lg font-bold text-gray-900">12</p>
+              <p class="text-lg font-bold text-gray-900">{{ totalStudents }}</p>
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
             <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20"></svg>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-900">Teachers</p>
-              <p class="text-lg font-bold text-gray-900">12</p>
+              <p class="text-lg font-bold text-gray-900">{{ totalTeachers }}</p>
             </div>
           </div>
         </div>
@@ -63,3 +63,40 @@
     </div>
   </div>
 </template>
+
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      totalStudents: 0,
+      totalTeachers: 0,
+    };
+  },
+  mounted() {
+    // Fetch the total number of students from the backend
+    axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/')
+      .then(response => {
+        // Assuming the response contains a 'data' object with a list of students
+        // Get the length of the 'data' array to determine the total number of students
+        this.totalStudents = response.data.data.length;
+      })
+      .catch(error => {
+        console.error('Error fetching total students:', error);
+      });
+
+    // Fetch the total number of teachers from the backend
+    axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/')
+      .then(response => {
+        // Assuming the response contains a 'data' object with a list of teachers
+        // Get the length of the 'data' array to determine the total number of teachers
+        this.totalTeachers = response.data.data.length;
+      })
+      .catch(error => {
+        console.error('Error fetching total teachers:', error);
+      });
+  },
+};
+</script>
