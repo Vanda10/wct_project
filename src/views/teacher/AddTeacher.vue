@@ -43,7 +43,7 @@ const newTeacher = ref({
 
 const addTeacher = async () => {
   try {
-    await axios.post('http://127.0.0.1:8000/teachers/', newTeacher.value);
+    await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/', newTeacher.value);
     // Assuming the API response contains teacher data
     alert('Teacher added successfully');
     // Clear the input fields

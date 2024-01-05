@@ -66,7 +66,7 @@
     try {
       if (editedTeacher.value[field] !== teacher.value[field]) {
         // If the value has changed, update it in the database
-        await axios.put(`http://127.0.0.1:8000/teachers/${route.params.id}`, {
+        await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${route.params.id}`, {
           [field]: editedTeacher.value[field],
         });
       }
@@ -78,7 +78,7 @@
   
   const updateTeacher = async () => {
     try {
-      await axios.put(`http://127.0.0.1:8000/teachers/${route.params.id}`, editedTeacher.value);
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${route.params.id}`, editedTeacher.value);
       // Assuming the API response contains teacher data
       teacher.value = { ...editedTeacher.value };
       editing.value = false;
@@ -89,7 +89,7 @@
   
   onMounted(async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/teachers/${route.params.id}`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${route.params.id}`);
       teacher.value = response.data;
       editedTeacher.value = { ...teacher.value }; // Initialize editedTeacher with teacher data
     } catch (error) {

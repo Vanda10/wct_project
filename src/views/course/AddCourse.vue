@@ -1,53 +1,72 @@
 <template>
     <div class="main-content ml-[300px] p-8">
-        <!-- first row -->
-      <div class="row text-4xl font-bold mt-20 ml-[100px]">
-        <h1>Add Course</h1>
+      <div class="text-4xl font-bold mt-20 ml-20">
+        <h1>Create Course</h1>
       </div>
+  
+      <div class="flex mt-10 ml-20">
+        <div class="grid grid-cols-1 text-gray-400 font-bold">
+          <div class="mb-3">
+            <label class="block text-[#183D5C] mb-1">Course ID</label>
+            <input v-model="newCourse.courseid" class="form-control w-[500px]" />
+          </div>
+          <div class="mb-3">
+            <label class="block text-[#183D5C] mb-1">Course Name</label>
+            <input v-model="newCourse.coursename" class="form-control" />
+          </div>
 
-      <div class="mt-5 container">
-        <div class="row ml-20 mr-20">
-            <!-- Faculty -->
-            <div class="col-md-6 mb-3">
-                <label for="faculty" class="form-text text-gray-900">Course Name</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="courseName" aria-describedby="basic-addon4">
-                </div>
-            </div>
-    
-            <!-- Department -->
-            <div class="col-md-6 mb-3">
-                <label for="department" class="form-text text-gray-900">Course Cdoe</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="courseCode" aria-describedby="basic-addon4">
-                </div>
-            </div>
+  
+          <button @click="addCourse" class="btn w-[150px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+            Add Course
+          </button>
         </div>
-    
-        <div class="row ml-20 mr-20">
-            <!-- Class -->
-            <div class="col-md-6 mb-3">
-                <label for="class" class="form-text text-gray-900">Department</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="department" aria-describedby="basic-addon4">
-                </div>
-            </div>
-        </div>
-      </div>
-    
-
-      <div class="flex mt-4 ml-[105px] mr-20">
-        <button type="button" class="btn text-white bg-[#183D5C] hover:bg-sky-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">
-            <i class="bi bi-pencil-square"></i> Add Course
-        </button>  
       </div>
     </div>
-</template>
-
-<script setup>
-
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+  </template>
+  
+  <script setup>
+  import { ref } from 'vue';
+  import axios from 'axios';
+  
+  const newCourse = ref({
+    courseid: '',
+    coursename: '',
+  });
+  
+  const courseIdExists = ref(false);
+  
+  const checkCourseId = async () => {
+    try {
+      const trimmedCourseId = newCourse.value.courseid.trim();
+  
+      const existingCourses = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/', {
+        params: {
+          courseid: trimmedCourseId,
+        },
+      });
+  
+      courseIdExists.value = existingCourses.data.length > 0;
+    } catch (error) {
+      console.error('Error checking course ID:', error);
+    }
+  };
+  
+  const addCourse = async () => {
+    try {
+      if (courseIdExists.value) {
+        alert('Course ID already exists. Please choose a different Course ID.');
+      } else {
+        await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/', newCourse.value);
+        alert('Course added successfully');
+        newCourse.value = {
+          courseid: '',
+          coursename: '',
+          // Additional fields for Course
+          // ...
+        };
+      }
+    } catch (error) {
+      console.error('Error adding course:', error);
+    }
+  };
+  </script>

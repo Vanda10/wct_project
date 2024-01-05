@@ -84,7 +84,7 @@ const addStudent = async () => {
       }
     }
 
-    await axios.post('http://127.0.0.1:8000/students/', newStudent.value);
+    await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/', newStudent.value);
     // Assuming the API response contains student data
     alert('Student added successfully');
     // Clear the input fields

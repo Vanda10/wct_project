@@ -84,8 +84,8 @@ const confirmDelete = (studentId) => {
 
 const deleteStudent = async (studentId) => {
   try {
-    await axios.delete(`http://127.0.0.1:8000/students/${studentId}`);
-    const response = await axios.get('http://127.0.0.1:8000/students');
+    await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${studentId}`);
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/');
     students.value = response.data.data;
     filterTable();
   } catch (error) {
@@ -95,7 +95,7 @@ const deleteStudent = async (studentId) => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/students');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students');
     students.value = response.data.data;
     filterTable();
   } catch (error) {

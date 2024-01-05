@@ -115,7 +115,7 @@
     try {
       if (editedStudent.value[field] !== student.value[field]) {
         // If the value has changed, update it in the database
-        await axios.put(`http://127.0.0.1:8000/students/${route.params.id}`, {
+        await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`, {
           [field]: editedStudent.value[field],
         });
       }
@@ -127,7 +127,7 @@
   
   const updateStudent = async () => {
     try {
-      await axios.put(`http://127.0.0.1:8000/students/${route.params.id}`, editedStudent.value);
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`, editedStudent.value);
       // Assuming the API response contains student data
       student.value = { ...editedStudent.value };
       editing.value = false;
@@ -138,7 +138,7 @@
   
   onMounted(async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/students/${route.params.id}`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`);
       student.value = response.data;
       editedStudent.value = { ...student.value }; // Initialize editedStudent with student data
     } catch (error) {
@@ -146,4 +146,3 @@
     }
   });
   </script>
-  

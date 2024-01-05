@@ -15,7 +15,7 @@ const router = useRouter()
 onMounted(async () => {
   supabase.auth.getSession().then(({ data }) => {
     if(data.session) {
-      router.push({ path: '/', replace: true })
+      router.push({ path: '/dashboard', replace: true })
     }else {
       router.push({ path: '/login', replace: true })
     }

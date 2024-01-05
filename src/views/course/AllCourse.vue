@@ -83,8 +83,8 @@ const confirmDelete = (courseId) => {
 
 const deleteCourse = async (courseId) => {
   try {
-    await axios.delete(`http://127.0.0.1:8000/courses/${courseId}`);
-    const response = await axios.get('http://127.0.0.1:8000/courses');
+    await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${courseId}`);
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/');
     courses.value = response.data.data;
     filterTable();
   } catch (error) {
@@ -94,7 +94,7 @@ const deleteCourse = async (courseId) => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/courses');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/');
     courses.value = response.data.data;
     filterTable();
   } catch (error) {

@@ -76,7 +76,7 @@
   
   const updateCourse = async () => {
     try {
-      await axios.put(`http://127.0.0.1:8000/courses/${route.params.id}`, editedCourse.value);
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${route.params.id}`, editedCourse.value);
       // Assuming the API response contains course data
       course.value = { ...editedCourse.value };
       editing.value = false;
@@ -87,7 +87,7 @@
   
   onMounted(async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/courses/${route.params.id}`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${route.params.id}`);
       course.value = response.data;
       editedCourse.value = { ...course.value }; // Initialize editedCourse with course data
     } catch (error) {

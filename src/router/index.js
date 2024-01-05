@@ -22,6 +22,7 @@ const routes = [
   { path: '/', 
     component: AdminPage,
      children: [
+      { path: '/', component: dashboard }, 
       { path: '/dashboard', component: dashboard }, // Add a route for the dashboard
       { path: '/all-teacher', component: AllTeacher }, // Make the dashboard route a child of '/'
       { path: '/add-teacher', component: AddTeacher },
