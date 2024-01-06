@@ -3,7 +3,7 @@
     <!-- First row -->
     <div class="flex justify-between">
       <p class="mt-2 ml-7 font-bold text-[20px]">All Students</p>
-      <button @click="goToAddStudent" class="btn text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm me-0 mb-2">
+      <button @click="goToAddStudent" class="btn text-white bg-[#B22222] hover:bg-red-700 font-medium rounded-lg text-sm me-0 mb-2">
         <i class="bi bi-pencil-square"></i> Add Student
       </button>
     </div>

@@ -53,6 +53,5 @@ async function onLogout() {
   if (error) {
     return
   }
-  
 }
 </script>

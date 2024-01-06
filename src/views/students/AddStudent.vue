@@ -48,7 +48,7 @@
         </div>
 
         <router-link to="/add-student">
-        <button @click="addStudent" class="btn w-[150px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+        <button @click="addStudent" class="btn w-[150px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
           Add Student
         </button>
       </router-link>

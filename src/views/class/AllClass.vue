@@ -3,12 +3,6 @@
     <!-- First row -->
     <div class="flex justify-between">
       <p class="mt-2 ml-7">Classes</p>
-      <button
-        type="button"
-        class="btn text-white bg-sky-600 hover:bg-sky-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
-      >
-        <i class="bi bi-pencil-square"></i> Add Class
-      </button>
     </div>
 
     <!-- Second row -->

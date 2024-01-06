@@ -44,7 +44,7 @@
 
       <div class="flex ml-[105px] mt-4 mr-0">
         <!-- Button trigger modal -->
-            <button type="button" class="btn text-white bg-[#183D5C] hover:bg-sky-700 px-4 py-2 me-2 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn text-white bg-[#B22222] hover:bg-red-700 px-4 py-2 me-2 mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-pencil-square"></i> Assign
             </button>
       </div>

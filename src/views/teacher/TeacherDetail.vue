@@ -25,23 +25,11 @@
                 <input v-model="editedTeacher.specialist" class="mb-3 form-control" />
                 <input v-model="editedTeacher.email" class="mb-3 form-control" />
                 <input v-model="editedTeacher.password" class="mb-3 form-control" />
-                <button @click="updateTeacher" class="btn w-[100px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+                <button @click="updateTeacher" class="btn w-[100px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
                     Update
                 </button>
             </div>
         </div>
-        </div>
-                <!-- Additional details -->
-        <div class="flex-col mt-20 mr-20 ml-[110px] text-[#183D5C] font-bold">
-            <div class="flex mt-4">
-            <i class="bi bi-easel2-fill"></i>
-            <p class="ml-3">Courses: </p>
-            </div>
-    
-            <div class="flex mt-4">
-            <i class="bi bi-door-open"></i>
-            <p class="ml-3">Classes: </p>
-            </div>
         </div>
     </div>  
   </template>

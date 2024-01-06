@@ -22,7 +22,7 @@
           <div v-else class="grid grid-cols-1 text-gray-400 font-bold">
             <input v-model="editedCourse.coursename" class="mb-3 form-control w-[500px]" />
             <input v-model="editedCourse.courseid" class="mb-3 form-control" />
-            <button @click="updateCourse" class="btn w-[100px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+            <button @click="updateCourse" class="btn w-[100px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
               Update
             </button>
           </div>
@@ -30,17 +30,6 @@
       </div>
   
       <!-- Additional details -->
-      <div class="flex-col mt-20 mr-20 ml-[110px] text-[#183D5C] font-bold">
-        <div class="flex mt-4">
-          <i class="bi bi-easel2-fill"></i>
-          <p class="ml-3">Additional Details Placeholder</p>
-        </div>
-  
-        <div class="flex mt-4">
-          <i class="bi bi-door-open"></i>
-          <p class="ml-3">Additional Details Placeholder</p>
-        </div>
-      </div>
     </div>
   </template>
   

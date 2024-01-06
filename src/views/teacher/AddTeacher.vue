@@ -22,7 +22,7 @@
           <label class="block text-[#183D5C] mb-1">Password</label>
           <input v-model="newTeacher.password" class="form-control" />
         </div>
-        <button @click="addTeacher" class="btn w-[150px] text-white bg-sky-600 hover:bg-sky-700 px-4 py-2.5 mt-2">
+        <button @click="addTeacher" class="btn w-[150px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
           Add Teacher
         </button>
       </div>
