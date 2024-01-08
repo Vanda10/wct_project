@@ -63,8 +63,7 @@ async function signInWithEmail() {
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value
-  })
-  console.log(data)
+  })  
 }
 
 
@@ -73,11 +72,13 @@ const getRole = ref('admin')
 
 const process = () => {
   console.log('Role changed:', getRole.value)
-  }
+  localStorage.setItem("role", getRole.value)
+}
 
   // Log the initial value on component mount
   onMounted(() => {
     console.log(`Initial role value: ${getRole.value}`)
+    localStorage.setItem("role", getRole.value)
   })
 
   defineProps({

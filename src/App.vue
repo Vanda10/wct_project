@@ -15,7 +15,14 @@ const router = useRouter()
 onMounted(async () => {
   supabase.auth.getSession().then(({ data }) => {
     if(data.session) {
-      router.push({ path: '/dashboard', replace: true })
+      const role = ref(localStorage.getItem("role"))
+      if (role.value == "admin"){
+        router.push("/admin")
+      }else if(role.value == "student"){
+        router.push("/student")
+      }else if(role.value == "teacher"){
+        router.push("/teacher")
+      }
     }else {
       router.push({ path: '/login', replace: true })
     }
@@ -25,7 +32,14 @@ onMounted(async () => {
     if (event == "SIGNED_OUT"){
       router.push({ path: '/login', replace: true })
     }else if(event == "SIGNED_IN") {
-      router.push({ path: '/', replace: true })
+      const role = ref(localStorage.getItem("role"))
+      if (role.value == "admin"){
+        router.push("/admin")
+      }else if(role.value == "student"){
+        router.push("/student")
+      }else if(role.value == "teacher"){
+        router.push("/teacher")
+      }
     }
   })
 })

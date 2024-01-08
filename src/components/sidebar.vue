@@ -35,13 +35,13 @@
       v-if="teacher"
       class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-100 font-bold">
       <h1 id="all-teachers" class="p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/all-teacher" replace>
+        <router-link to="/admin/all-teacher" replace>
           <i class="bi bi-caret-right-fill"></i>
           All teachers
         </router-link>
       </h1>
       <h1 id="add-teacher" class="p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/add-teacher" replace>
+        <router-link to="/admin/add-teacher" replace>
           <i class="bi bi-caret-right-fill"></i>
           Add teacher
         </router-link>
@@ -64,13 +64,13 @@
       v-if="student"
       class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-100 font-bold">
       <h1 class="p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/all-student">
+        <router-link to="/admin/all-student">
           <i class="bi bi-caret-right-fill"></i>
           All students
         </router-link>
       </h1>
       <h1 class="p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/add-student">
+        <router-link to="/admin/add-student">
           <i class="bi bi-caret-right-fill"></i>
           Add student
         </router-link>
@@ -89,14 +89,14 @@
     <div v-if="classes"
       class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-100 font-bold">
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/all-class">
+        <router-link to="/admin/all-class">
           <i class="bi bi-caret-right-fill"></i>
           Class list
         </router-link>
       </h1>
 
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/manage-class">
+        <router-link to="/admin/manage-class">
           <i class="bi bi-caret-right-fill"></i>
           Manage Class
         </router-link>
@@ -115,13 +115,13 @@
     <div v-if="courses"
       class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-100 font-bold">
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="all-course">
+        <router-link to="/admin/all-course">
           <i class="bi bi-caret-right-fill"></i>
           Courses list
         </router-link>
       </h1>
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/add-course">
+        <router-link to="/admin/add-course">
           <i class="bi bi-caret-right-fill"></i>
           Add course
         </router-link>
