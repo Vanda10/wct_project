@@ -124,7 +124,7 @@
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/admin/all-course">
           <i class="bi bi-caret-right-fill"></i>
-          Courses list
+          All Courses
         </router-link>
       </h1>
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">

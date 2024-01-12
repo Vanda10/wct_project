@@ -49,7 +49,7 @@
     <!-- Search button -->
     <button
       type="button"
-      class="btn text-white bg-[#007BFF] hover:bg-[#0056b3] font-medium rounded-lg text-sm mt-3 px-5 py-2.5 me-2 mb-2"
+      class="btn text-white bg-[#B22222] hover:bg-red-700  font-medium rounded-lg text-sm mt-3 px-5 py-2.5 me-2 mb-2"
       @click="searchCourses">
       <i class="bi bi-search"></i> Search
     </button>

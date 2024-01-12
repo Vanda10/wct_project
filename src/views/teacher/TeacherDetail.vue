@@ -47,7 +47,7 @@
         <label for="courseName">Course Name:</label>
         <input v-model="assignCourseName" class="form-control mb-4" placeholder="Enter course name" />
         <div class="flex justify-end">
-          <button @click="assignTeacher" class="btn text-white bg-[#008080] hover:bg-[#006666] px-4 py-2">
+          <button @click="assignTeacher" class="btn text-white bg-[#B22222] hover:bg-red-700 px-4 py-2">
             Assign
           </button>
           <button @click="closeAssignPopup" class="btn text-white bg-[#B22222] hover:bg-red-700 px-4 py-2 ml-2">
@@ -86,7 +86,7 @@
     </div>
     <!-- Add button for assigning teacher to class and course -->
     <div class="flex justify-end mt-3">
-      <button @click="showAssignPopup" class="btn w-[100px] text-white font-bold bg-[#008080] hover:bg-[#006666] ">
+      <button @click="showAssignPopup" class="btn w-[100px] text-white font-bold bg-[#B22222] hover:bg-red-700 ">
         <i class="bi bi-plus-circle"></i>
         Assign
       </button>
