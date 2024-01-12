@@ -1,7 +1,7 @@
 <template>
     <div class="main-content ml-[300px] p-8">
       <div class="text-4xl font-bold mt-20 ml-20">
-        <h1>Create Class</h1>
+        <h1>Add Class</h1>
       </div>
   
       <div class="flex mt-10 ml-20">

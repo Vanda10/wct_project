@@ -91,7 +91,7 @@
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/admin/all-class">
           <i class="bi bi-caret-right-fill"></i>
-          Class list
+          All Classes
         </router-link>
       </h1>
 
@@ -105,7 +105,7 @@
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/admin/manage-class">
           <i class="bi bi-caret-right-fill"></i>
-          Manage Class
+          Class Schedule
         </router-link>
       </h1>
     </div>
