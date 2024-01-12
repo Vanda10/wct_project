@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 // Import your components
-import dashboard from '../views/admin/dashboard.vue';
+import dashboard from '../components/dashboard.vue';
 import AllTeacher from '../views/admin/teacher/AllTeacher.vue';
 import AddTeacher from '../views/admin/teacher/AddTeacher.vue';
 import TeacherDetail from '../views/admin/teacher/TeacherDetail.vue';
@@ -27,7 +27,7 @@ const routes = [
     path: '/admin', 
     component: AdminPage,
      children: [  
-      { path: '/', component: dashboard }, // Add a route for the dashboard
+      { path: '/admin', component: dashboard }, // Add a route for the dashboard
       { path: '/admin/all-teacher', component: AllTeacher }, // Make the dashboard route a child of '/'
       { path: '/admin/add-teacher', component: AddTeacher },
       { path: '/admin/teacher-detail/:id', name: 'teacher_detail', component: TeacherDetail },
@@ -35,7 +35,7 @@ const routes = [
       { path: '/admin/add-student', component: AddStudent },
       { path: '/admin/student-detail/:id', name: 'student_detail', component: StudentDetail },
       { path: '/admin/all-class', component: AllClass },
-      // { path: '/add-class', component: AddClass },
+      { path: '/admin/add-class', component: AddClass },
       { path: '/admin/manage-class', component: Schedule},
       { path: '/admin/add-course', component: AddCourse },
       { path: '/admin/all-course', component: AllCourse },
@@ -48,14 +48,19 @@ const routes = [
     path: '/student', 
     component: StudentPage,
      children: [  
-      { path: '/', component: StudentPage }, 
+      { path: '/student', component: dashboard },
+      // { path: '/student/student-detail/:id', name: 'student_detail', component: StudentDetail },
+      { path: '/student/manage-class', component: Schedule}, 
+
     ]
   },
   { 
     path: '/teacher', 
     component: TeacherPage,
      children: [  
-      { path: '/', component: TeacherPage}, 
+      { path: '/teacher', component: dashboard}, 
+      // { path: '/teacher/teacher-detail/:id', name: 'teacher_detail', component: TeacherDetail },
+      { path: '/teacher/manage-class', component: Schedule}, 
     ]
   },
 

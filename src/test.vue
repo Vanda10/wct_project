@@ -12,9 +12,9 @@ const role = ref(localStorage.getItem("role"));
 onMounted(async () => {
   try {
     const { data } = await auth.getSession();
-
+    
     if (data.session) {
-      if (role.value === 'admin' || role.value === 'student' || role.value === 'teacher') {
+      if (role === 'admin' || role === 'student' || role === 'teacher') {
         router.push(`/${role.value}`);
       }
     } else {
@@ -26,13 +26,13 @@ onMounted(async () => {
 
   auth.onAuthStateChange((event, _session) => {
     if (event === 'SIGNED_OUT') {
-      localStorage.removeItem("role");
       role.value = null;
       router.push({ path: '/login', replace: true });
     } else if (event === 'SIGNED_IN') {
-      if (role.value === 'admin' || role.value === 'student' || role.value === 'teacher') {
+
+      if (role === 'admin' || role === 'student' || role === 'teacher') {
         router.push(`/${role.value}`);
-      }
+      } 
     }
   });
 });
@@ -43,8 +43,3 @@ onMounted(async () => {
     <router-view />
   </div>
 </template>
-
-
-<style scoped>
-
-</style>

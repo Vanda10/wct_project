@@ -6,4 +6,10 @@ export default defineConfig({
   plugins: [
     vue()
   ],
+  esbuild: {
+    // Add this configuration to handle commonjs-style packages
+    loader: {
+      '.js': 'jsx',
+    },
+  },
 })

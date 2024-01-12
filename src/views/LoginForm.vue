@@ -49,40 +49,75 @@
       </div>
     </div>
 </template>
-<script setup> 
+<script setup>
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import auth from '../authService';
 
-
-import { createClient } from '@supabase/supabase-js'
 const email = ref('');
 const password = ref('');
+const getRole = ref('admin');
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('https://mkslcxldoihuzcxijabw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rc2xjeGxkb2lodXpjeGlqYWJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQzNjE1MTUsImV4cCI6MjAxOTkzNzUxNX0.40TikJDPUS8rgKYv4-YAMG1kvkpv7AzX4AynpRd3d08')
+const router = useRouter();
 
-async function signInWithEmail() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email.value,
-    password: password.value
-  })  
-}
+const signInWithEmail = async () => {
+  try {
+    const { data, error } = await auth.signInWithPassword({
+      email: email.value,
+      password: password.value
+    });
 
+    if (error) {
+      console.error('Error signing in:', error.message);
+      // Handle authentication error, reset form, or show error message
+      resetForm();
+    } else {
+      // Call the backend API to check the user role
+      const response = await axios.get(`http://127.0.0.1:8000/check_role?role=${getRole.value}&email=${email.value}`);
 
-import { ref, onMounted, watch } from 'vue'
-const getRole = ref('admin')
+      if (response.data) {
+        console.log('User authenticated and role is valid', response.data);
+        // Await the handleValidAuthentication to ensure the role is set before redirection
+        await handleValidAuthentication();
+      } else {
+        console.log('User authenticated but role is not valid', response.data);
+        // Handle invalid role, reset form, or show error message
+        resetForm();
+      }
+    }
+  } catch (error) {
+    console.error('Error signing in:', error.message);
+    // Handle other authentication errors, reset form, or show error message
+    resetForm();
+  }
+};
 
 const process = () => {
-  console.log('Role changed:', getRole.value)
-  localStorage.setItem("role", getRole.value)
-}
+  console.log('Role changed:', getRole.value);
+  localStorage.setItem('role', getRole.value);
+};
 
-  // Log the initial value on component mount
-  onMounted(() => {
-    console.log(`Initial role value: ${getRole.value}`)
-    localStorage.setItem("role", getRole.value)
-  })
+const resetForm = () => {
+  // Reset form values or show an error message as needed
+  email.value = '';
+  password.value = '';
+};
 
-  defineProps({
-      
-  })
+const handleValidAuthentication = async () => {
+  const role = localStorage.getItem('role');
+  if (role === 'admin') {
+    router.push({ path: '/admin', replace: true });
+  } else if (role === 'student') {
+    router.push({ path: '/student', replace: true });
+  } else if (role === 'teacher') {
+    router.push({ path: '/teacher', replace: true });
+  }
+};
 
+onMounted(() => {
+  console.log(`Initial role value: ${getRole.value}`);
+  localStorage.setItem('role', getRole.value);
+});
 </script>

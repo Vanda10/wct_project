@@ -12,7 +12,7 @@
     <div class="my-4 bg-gray-500 h-[1px]"></div>
 
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
-      <router-link to="/">
+      <router-link to="/admin">
         <i class="bi bi-bar-chart-fill"></i>
         <span class="text-[15px] ml-4 font-bold">Dashboard</span>
       </router-link>
@@ -96,6 +96,13 @@
       </h1>
 
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
+        <router-link to="/admin/add-class">
+          <i class="bi bi-caret-right-fill"></i>
+          Add Class
+        </router-link>
+      </h1>
+
+      <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
         <router-link to="/admin/manage-class">
           <i class="bi bi-caret-right-fill"></i>
           Manage Class
@@ -159,13 +166,10 @@ if (category === 'teacher') {
   courses.value = !courses.value;
 }
 }
-import { createClient } from '@supabase/supabase-js'
-
-// Create a single supabase client for interacting with your database
-const supabase = createClient('https://mkslcxldoihuzcxijabw.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rc2xjeGxkb2lodXpjeGlqYWJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQzNjE1MTUsImV4cCI6MjAxOTkzNzUxNX0.40TikJDPUS8rgKYv4-YAMG1kvkpv7AzX4AynpRd3d08')
+import auth from '../authService';
 
 async function onLogout() {
-  const { error } = await supabase.auth.signOut()
+  const { error } = await auth.signOut()
   if (error) {
     return
   }

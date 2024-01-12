@@ -1,10 +1,10 @@
 <template>
   <div class="main-content ml-[300px] p-8">
-    <div class="text-4xl font-bold mt-4 ml-10">
-      <h1>Create Student</h1>
+    <div class="flex  justify-center  text-2xl font-bold mt-4">
+      <h1>Student Information Form</h1>
     </div>
 
-    <div class="flex mt-5 ml-5">
+    <div class="flex mt-5">
       <div class="grid grid-cols-2 gap-6 text-gray-400 font-bold w-full">
         <div class="mb-3">
           <label class="block text-[#183D5C] mb-1">First Name</label>
@@ -36,30 +36,37 @@
         </div>
         <div class="mb-3">
           <label class="block text-[#183D5C] mb-1">Department ID</label>
-          <input v-model="newStudent.department_id" class="form-control" />
+          <select v-model="newStudent.department_id" class="form-control">
+            <option value="1">DSE</option>
+            <option value="2">ITE</option>
+            <option value="3">FTE</option>
+            <option value="4">BIO</option>
+            <option value="5">ASCE</option>
+            <option value="6">TEED</option>
+          </select>
         </div>
         <div class="mb-3">
           <label class="block text-[#183D5C] mb-1">Class ID</label>
-          <input v-model="newStudent.class_id" class="form-control" />
+          <select v-model="newStudent.group_code" class="form-control">
+            <option v-for="classOption in classOptions" :key="classOption.id" :value="classOption.group_code">
+              {{ classOption.group_code }}
+            </option>
+          </select>
         </div>
-        <div class="mb-3">
-          <label class="block text-[#183D5C] mb-1">Year</label>
-          <input v-model="newStudent.year" class="form-control" />
-        </div>
-
-        <router-link to="/add-student">
-        <button @click="addStudent" class="btn w-[150px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
-          Add Student
-        </button>
-      </router-link>
+      
       </div>
+
     </div>
+    <button @click="addStudent" class="btn mt-3 w-[150px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
+            Add Student
+    </button>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted} from 'vue';
 import axios from 'axios';
+import auth from '../../../authService';
 
 const newStudent = ref({
   first_name: '',
@@ -70,14 +77,24 @@ const newStudent = ref({
   email: '',
   password: '',
   department_id: '',
-  class_id: '',
-  year: '',
+  group_code: '',
+});
+
+const classOptions = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/classes/');
+    classOptions.value = response.data.data; // Assuming the API response is an array of objects with 'id' and 'name' properties
+  } catch (error) {
+    console.error('Error fetching class options:', error);
+  }
 });
 
 const addStudent = async () => {
   try {
     // Check if all required fields are present
-    const requiredFields = ['first_name', 'last_name', 'gender', 'dob', 'phone_number', 'email', 'password', 'department_id', 'class_id', 'year'];
+    const requiredFields = ['first_name', 'last_name', 'gender', 'dob', 'phone_number', 'email', 'password', 'department_id', 'group_code'];
     
     for (const field of requiredFields) {
       if (!newStudent.value[field]) {
@@ -87,9 +104,24 @@ const addStudent = async () => {
       }
     }
 
-    await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/', newStudent.value);
+    // Sign up with Supabase
+    const { user, error } = await auth.signUp({
+      email: newStudent.value.email,
+      password: newStudent.value.password,
+    });
+
+    if (error) {
+      console.error('Supabase sign-up error:', error.message);
+      alert('Error signing up. Please check your input.');
+      return;
+    }
+
+    // User successfully signed up, you can proceed to add student to the API or perform other actions
+    await axios.post('http://127.0.0.1:8000/students/', newStudent.value);
+
     // Assuming the API response contains student data
     alert('Student added successfully');
+
     // Clear the input fields
     newStudent.value = {
       first_name: '',
@@ -100,24 +132,12 @@ const addStudent = async () => {
       email: '',
       password: '',
       department_id: '',
-      class_id: '',
-      year: '',
+      group_code: '',
     };
   } catch (error) {
-    if (error.response && error.response.status === 422) {
-      // Validation error
-      alert('Validation error. Please check your input.');
-      console.error('Validation error:', error.response.data.detail);
-
-      // Log individual validation errors
-      error.response.data.detail.forEach((validationError, index) => {
-        console.error(`Validation error ${index + 1}:`, validationError);
-      });
-    } else {
-      // Other error
-      console.error('Error adding student:', error);
-      // You can handle other types of errors here
-    }
+    // Handle errors
+    console.error('Error adding student:', error);
+    // You can handle other types of errors here
   }
 };
 </script>

@@ -3,7 +3,7 @@
     <!-- First row -->
     <div class="flex justify-between">
       <p class="mt-3 ml-3 font-bold text-m">Teachers</p>
-      <router-link to="/add-teacher">
+      <router-link to="/admin/add-teacher">
       <button
         type="button"
         class="btn text-white bg-[#B22222] hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
@@ -31,6 +31,7 @@
     <table class="table table-striped mt-2">
       <thead>
         <tr>
+          <th scope="col">No</th>
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
@@ -38,7 +39,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="teacher in filteredTeachers" :key="teacher.id">
+        <tr v-for="(teacher, index) in filteredTeachers" :key="teacher.id">
+          <th scope="row">{{ index + 1 }}</th>
           <th scope="row">{{ teacher.id }}</th>
           <td>{{ teacher.name || 'N/A' }}</td>
           <td>{{ teacher.email || 'N/A' }}</td>
@@ -85,8 +87,8 @@ const confirmDelete = (teacherId) => {
 
 const deleteTeacher = async (teacherId) => {
   try {
-    await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers//${teacherId}`);
-    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/');
+    await axios.delete(`http://localhost:8000/teachers/${teacherId}`);
+    const response = await axios.get('http://localhost:8000/teachers/');
     teachers.value = response.data.data;
     filterTable();
   } catch (error) {
@@ -96,7 +98,7 @@ const deleteTeacher = async (teacherId) => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/');
+    const response = await axios.get('http://localhost:8000/teachers/');
     teachers.value = response.data.data;
     filterTable();
   } catch (error) {

@@ -13,9 +13,11 @@
     "@fullcalendar/vue3": "^6.1.10",
     "@supabase/supabase-js": "^2.39.2",
     "axios": "^1.6.4",
+    "exceljs": "^4.4.0",
     "fullcalendar": "^6.1.10",
     "vue": "^3.3.11",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
