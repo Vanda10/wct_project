@@ -130,7 +130,6 @@ const stopEditing = async (field) => {
   }
 };
 
-// Assume searchCourses is defined in the same component
 
 const editCourse = async (course) => {
   const newCourseName = prompt('Enter new course name:', course.coursename);
@@ -143,7 +142,7 @@ const editCourse = async (course) => {
       });
 
       // Refresh the course data after a successful update
-      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${teacherid.value}`);
       teachercourse.value = response.data.data;
       console.log(teachercourse.value)
     } catch (error) {
@@ -160,7 +159,7 @@ const deleteCourse = async (courseId) => {
       await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${courseId}`);
 
       // Refresh the course data after a successful delete
-      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${teacherid.value}`);
       teachercourse.value = response.data.data;
 
       console.log(teachercourse.value)
@@ -222,7 +221,7 @@ const assignTeacher = async () => {
       coursename: assignCourseName.value,
     });
 
-    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${teacherid.value}`);
     teachercourse.value = response.data.data;
     console.log('teacher id is', teacher.value.id)
     showAssignModal.value = false;
