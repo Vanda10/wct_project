@@ -65,7 +65,7 @@
     try {
       const trimmedClassId = newClass.value.class_id.trim(); // Update to the correct field name
   
-      const existingClasses = await axios.get('http://127.0.0.1:8000/classes/', {
+      const existingClasses = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/', {
         params: {
           class_id: trimmedClassId, // Update to the correct field name
         },
@@ -82,7 +82,7 @@
       if (classIdExists.value) {
         alert('Class ID already exists. Please choose a different Class ID.');
       } else {
-        await axios.post('http://127.0.0.1:8000/classes/', newClass.value); // Update to the correct API endpoint
+        await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/', newClass.value); // Update to the correct API endpoint
         alert('Class added successfully');
         newClass.value = {
             group_code: '', 

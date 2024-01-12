@@ -85,7 +85,7 @@ const router = useRouter();
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/classes/');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/');
     classOptions.value = response.data.data; // Assuming the API response is an array of objects with 'id' and 'group_code' properties
   } catch (error) {
     console.error('Error fetching class options:', error);
@@ -107,7 +107,7 @@ const filterTable = () => {
 
 const showAllStudents = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/students/');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/');
     students.value = response.data.data;
     filterTable();
   } catch (error) {
@@ -146,7 +146,7 @@ const downloadToExcel = async () => {
 const searchStudents = async () => {
   if (selectedGroup.value) {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/students/by_group/${selectedGroup.value}`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/by_group/${selectedGroup.value}`);
       students.value = response.data.data;
       filterTable();
     } catch (error) {
@@ -167,8 +167,8 @@ const confirmDelete = (studentId) => {
 
 const deleteStudent = async (studentId) => {
   try {
-    await axios.delete(`http://127.0.0.1:8000/students/${studentId}`);
-    const response = await axios.get('http://127.0.0.1:8000/students/');
+    await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${studentId}`);
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/');
     students.value = response.data.data;
     filterTable();
   } catch (error) {
@@ -178,7 +178,7 @@ const deleteStudent = async (studentId) => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/students/');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/');
     students.value = response.data.data;
     filterTable();
   } catch (error) {

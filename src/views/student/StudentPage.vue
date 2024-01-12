@@ -15,21 +15,29 @@
 
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
       <router-link to="/student">
-        <i class="bi bi-bar-chart-fill"></i>
-        <span class="text-[15px] ml-4 font-bold">Dashboard</span>
+        <i class="bi bi-house-door-fill"></i>
+        <span class="text-[15px] ml-4 font-bold">HomePage</span>
       </router-link>
     </div>
 
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
-      <router-link to="/student/student_details">
-        <i class="bi bi-person-circle"></i>
-        <span class="text-[15px] ml-4 font-bold">Information</span>
+      <router-link to="/student/all-course">
+        <i class="bi bi-easel2-fill"></i>
+        <span class="text-[15px] ml-4 font-bold">Course</span>
       </router-link>
     </div>
+
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
-      <router-link to="/student/manage-class">
-        <i class="bi bi-bar-chart-fill"></i>
-        <span class="text-[15px] ml-4 font-bold">Schedule</span>
+      <router-link to="/student/all-teacher">
+        <i class="bi bi-calendar-date"></i>
+        <span class="text-[15px] ml-4 font-bold">Teacher</span>
+      </router-link>
+    </div>
+
+    <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
+      <router-link to="/student/schedule">
+        <i class="bi bi-people-fill"></i>
+        <span class="text-[15px] ml-4 font-bold">Room Schedule</span>
       </router-link>
     </div>
 

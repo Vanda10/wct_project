@@ -6,8 +6,9 @@
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="hero-content text-center text-neutral-content">
           <div class="max-w-md">
-            <h1 class="mb-5 mt-5 text-5xl font-bold">Hello {{ hello }}</h1>
-            <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <h1 class="mb-5 mt-10 text-5xl font-bold">Hello!!</h1>
+            <br>
+            <p class="mb-5"></p>
           </div>
         </div>
       </div>
@@ -19,18 +20,7 @@
       </div>
       
       <!-- Updated grid class with responsive classes -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-        
-        <!-- Faculties -->
-        <div class="bg-white rounded-lg shadow-md p-4">
-          <div class="flex items-center">
-            <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20"></svg>
-            <div class="ml-4">
-              <p class="text-sm font-medium text-gray-900">Faculties</p>
-              <p class="text-lg font-bold text-gray-900">12</p>
-            </div>
-          </div>
-        </div>
+      <div class="flex justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
 
         <!-- Department -->
         <div class="bg-white rounded-lg shadow-md p-4">
@@ -38,7 +28,7 @@
             <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20"></svg>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-900">Department</p>
-              <p class="text-lg font-bold text-gray-900">12</p>
+              <p class="text-lg font-bold text-gray-900">6</p>
             </div>
           </div>
         </div>

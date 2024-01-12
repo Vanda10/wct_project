@@ -22,7 +22,6 @@
         </div>
         <div v-else class="grid grid-cols-1 text-gray-400 font-bold">
           <input v-model="editedTeacher.name" class="mb-3 form-control w-[500px]" />
-          <input v-model="editedTeacher.specialist" class="mb-3 form-control" />
           <button @click="updateTeacher" class="btn w-[100px] text-white bg-[#B22222] hover:bg-red-700 px-4 py-2.5 mt-2">
             Update
           </button>
@@ -121,7 +120,7 @@ const stopEditing = async (field) => {
   try {
     if (editedTeacher.value[field] !== teacher.value[field]) {
       // If the value has changed, update it in the database
-      await axios.put(`http://localhost:8000/teachers/${route.params.id}`, {
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${route.params.id}`, {
         [field]: editedTeacher.value[field],
       });
     }
@@ -137,14 +136,14 @@ const editCourse = async (course) => {
   const newCourseName = prompt('Enter new course name:', course.coursename);
   if (newCourseName !== null) {
     try {
-      await axios.put(`http://127.0.0.1:8000/teacher-courses/${course.id}`, {
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${course.id}`, {
         teacher_id: course.teacher_id,
         group_code: course.group_code,
         coursename: newCourseName,
       });
 
       // Refresh the course data after a successful update
-      const response = await axios.get(`http://127.0.0.1:8000/teacher-courses/`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
       teachercourse.value = response.data.data;
       console.log(teachercourse.value)
     } catch (error) {
@@ -158,10 +157,10 @@ const deleteCourse = async (courseId) => {
   const shouldDelete = window.confirm('Are you sure you want to delete this course?');
   if (shouldDelete) {
     try {
-      await axios.delete(`http://127.0.0.1:8000/teacher-courses/${courseId}`);
+      await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${courseId}`);
 
       // Refresh the course data after a successful delete
-      const response = await axios.get(`http://127.0.0.1:8000/teacher-courses/`);
+      const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
       teachercourse.value = response.data.data;
 
       console.log(teachercourse.value)
@@ -175,7 +174,16 @@ const deleteCourse = async (courseId) => {
 
 const updateTeacher = async () => {
   try {
-    await axios.put(`http://localhost:8000/teachers/${route.params.id}`, editedTeacher.value);
+    const { name, password, email } = editedTeacher.value;
+    const teacherId = route.params.id;
+
+    const updatedTeacherData = { name, password, email };
+
+    console.log('Updating teacher with data:', updatedTeacherData);
+
+    // Include teacher_id in the URL if it's expected as a query parameter
+    await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${teacherId}?teacher_id=${teacherId}`, updatedTeacherData);
+
     // Assuming the API response contains teacher data
     teacher.value = { ...editedTeacher.value };
     editing.value = false;
@@ -184,9 +192,12 @@ const updateTeacher = async () => {
   }
 };
 
+
+
+
 const showAssignPopup = async () => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/classes/`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/`);
     classOptions.value = response.data.data;
 
     assignClassCode.value = "";
@@ -205,13 +216,13 @@ const closeAssignPopup = () => {
 
 const assignTeacher = async () => {
   try {
-    await axios.post(`http://127.0.0.1:8000/teacher-courses/`, {
+    await axios.post(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`, {
       teacher_id: teacher.value.id,
       group_code: assignClassCode.value,
       coursename: assignCourseName.value,
     });
 
-    const response = await axios.get(`http://127.0.0.1:8000/teacher-courses/`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/`);
     teachercourse.value = response.data.data;
     console.log('teacher id is', teacher.value.id)
     showAssignModal.value = false;
@@ -226,12 +237,12 @@ const teacherid = ref("");  // Change this line
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:8000/teachers/${route.params.id}`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/${route.params.id}`);
     teacher.value = response.data;
     teacherid.value = teacher.value.id;  // Storing teacher_id
     
     // Fetch teacher courses using teacher_id
-    const response_course = await axios.get(`http://127.0.0.1:8000/teacher-courses/${teacherid.value}`);
+    const response_course = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teacher-courses/${teacherid.value}`);
     teachercourse.value = response_course.data.data;
 
     console.log('Teacher details:', teacher.value);

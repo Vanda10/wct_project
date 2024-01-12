@@ -105,7 +105,7 @@ const filterTable = () => {
 
 const searchCourses = async () => {
   try {
-    const response = await axios.get(`http://localhost:8000/courses/?department_id=${selectedDepartment.value}&semester=${selectedSemester.value}&year=${selectedYear.value}`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/?department_id=${selectedDepartment.value}&semester=${selectedSemester.value}&year=${selectedYear.value}`);
 
     courses.value = response.data.data;
     
@@ -120,7 +120,7 @@ const editCourse = async (course) => {
   const newCourseName = prompt('Enter new course name:', course.coursename);
   if (newCourseName !== null) {
     try {
-      await axios.patch(`http://localhost:8000/courses/${course.id}?coursename=${newCourseName}`);
+      await axios.patch(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${course.id}?coursename=${newCourseName}`);
       await searchCourses();
     } catch (error) {
       console.error('Error editing course:', error);
@@ -134,7 +134,7 @@ const deleteCourse = async (courseId) => {
   const shouldDelete = window.confirm('Are you sure you want to delete this course?');
   if (shouldDelete) {
     try {
-      await axios.delete(`http://localhost:8000/courses/${courseId}`);
+      await axios.delete(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${courseId}`);
       await searchCourses();
     } catch (error) {
       console.error('Error deleting course:', error);

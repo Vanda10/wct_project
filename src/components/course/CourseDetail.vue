@@ -53,7 +53,7 @@
     try {
       if (editedCourse.value[field] !== course.value[field]) {
         // If the value has changed, update it in the database
-        await axios.put(`http://127.0.0.1:8000/courses/${route.params.id}`, {
+        await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/${route.params.id}`, {
           [field]: editedCourse.value[field],
         });
       }

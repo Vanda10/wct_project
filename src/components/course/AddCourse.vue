@@ -64,7 +64,7 @@
     try {
       const trimmedCourseId = newCourse.value.courseid.trim();
   
-      const existingCourses = await axios.get('http://127.0.0.1:8000/courses/', {
+      const existingCourses = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/', {
         params: {
           courseid: trimmedCourseId,
         },
@@ -81,7 +81,7 @@
       if (courseIdExists.value) {
         alert('Course ID already exists. Please choose a different Course ID.');
       } else {
-        await axios.post('http://127.0.0.1:8000/courses/', newCourse.value);
+        await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/', newCourse.value);
         alert('Course added successfully');
         newCourse.value = {
           department_id: '',

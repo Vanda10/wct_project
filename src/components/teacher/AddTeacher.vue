@@ -33,7 +33,7 @@
 <script setup>
 import {ref} from 'vue';
 import axios from 'axios';
-import auth from '../../../authService';
+import auth from '../../authService';
 
 const newTeacher = ref({
   name: '',
@@ -57,7 +57,7 @@ const addTeacher = async () => {
       return;
     }
 
-    await axios.post('http://localhost:8000/teachers/', newTeacher.value);
+    await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/teachers/', newTeacher.value);
     // Assuming the API response contains teacher data
     alert('Teacher added successfully');
     // Clear the input fields

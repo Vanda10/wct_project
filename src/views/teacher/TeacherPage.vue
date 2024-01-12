@@ -15,19 +15,20 @@
 
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
       <router-link to="/teacher">
-        <i class="bi bi-bar-chart-fill"></i>
-        <span class="text-[15px] ml-4 font-bold">Dashboard</span>
+        <i class="bi bi-house-door-fill"></i>
+        <span class="text-[15px] ml-4 font-bold">HomePage</span>
       </router-link>
     </div>
 
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
-      <router-link to="/teacher/teacher_details">
-        <i class="bi bi-person-circle"></i>
-        <span class="text-[15px] ml-4 font-bold">Information</span>
+      <router-link to="/teacher/all-student">
+        <i class="bi bi-people-fill"></i>
+        <span class="text-[15px] ml-4 font-bold">All Student</span>
       </router-link>
     </div>
+
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
-      <router-link to="/teacher/manage-class">
+      <router-link to="/teacher/manage-schedule">
         <i class="bi bi-calendar-date"></i>
         <span class="text-[15px] ml-4 font-bold">Schedule</span>
       </router-link>

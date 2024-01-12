@@ -135,7 +135,7 @@ const startEditing = (field) => {
 const stopEditing = async (field) => {
   try {
     if (editedStudent.value[field] !== student.value[field]) {
-      await axios.put(`http://127.0.0.1:8000/students/${route.params.id}`, {
+      await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`, {
         [field]: editedStudent.value[field],
       });
     }
@@ -147,17 +147,18 @@ const stopEditing = async (field) => {
 
 const updateStudent = async () => {
   try {
-    await axios.put(`http://127.0.0.1:8000/students/${route.params.id}`, editedStudent.value);
+    console.log(editedStudent.value)
+    await axios.put(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`, editedStudent.value);
     student.value = { ...editedStudent.value };
     editing.value = false;
 
     groupCode.value = editedStudent.value.group_code;
 
-    const academicResponse = await axios.get(`http://127.0.0.1:8000/classes/group/${groupCode.value}`);
+    const academicResponse = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/group/${groupCode.value}`);
     academicInfo.value = academicResponse.data;
 
     // Construct the URL for the course API call using academicInfo
-    const courseUrl = `http://127.0.0.1:8000/courses/?department_id=${academicInfo.value.department_id}&semester=${academicInfo.value.semester}&year=${academicInfo.value.year}`;
+    const courseUrl = `https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/?department_id=${academicInfo.value.department_id}&semester=${academicInfo.value.semester}&year=${academicInfo.value.year}`;
 
     // Fetch course data from the API using the constructed URL
     const courseResponse = await axios.get(courseUrl);
@@ -179,7 +180,7 @@ const courseRespone = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/classes/');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/');
     classOptions.value = response.data.data;
     
   } catch (error) {
@@ -189,16 +190,16 @@ onMounted(async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/students/${route.params.id}`);
+    const response = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/${route.params.id}`);
     student.value = response.data;
     groupCode.value = student.value.group_code;
     editedStudent.value = { ...student.value };
 
-    const academicResponse = await axios.get(`http://127.0.0.1:8000/classes/group/${groupCode.value}`);
+    const academicResponse = await axios.get(`https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/group/${groupCode.value}`);
     academicInfo.value = academicResponse.data;
 
     // Construct the URL for the course API call using academicInfo
-    const courseUrl = `http://127.0.0.1:8000/courses/?department_id=${academicInfo.value.department_id}&semester=${academicInfo.value.semester}&year=${academicInfo.value.year}`;
+    const courseUrl = `https://schoolmanagementapi-46c1c75befdd.herokuapp.com/courses/?department_id=${academicInfo.value.department_id}&semester=${academicInfo.value.semester}&year=${academicInfo.value.year}`;
 
     // Fetch course data from the API using the constructed URL
     const courseResponse = await axios.get(courseUrl);

@@ -14,7 +14,7 @@
     <div class="p-2.5 mt-3 flex items-center rounded-md px-4 hover:bg-[#4f1d1d] text-gray-100">
       <router-link to="/admin">
         <i class="bi bi-bar-chart-fill"></i>
-        <span class="text-[15px] ml-4 font-bold">Dashboard</span>
+        <span class="text-[15px] ml-4 font-bold">HomePage</span>
       </router-link>
     </div>
 
@@ -103,7 +103,7 @@
       </h1>
 
       <h1 class=" p-2 hover:bg-[#4f1d1d] rounded-md mt-1">
-        <router-link to="/admin/manage-class">
+        <router-link to="/admin/manage-schedule">
           <i class="bi bi-caret-right-fill"></i>
           Class Schedule
         </router-link>

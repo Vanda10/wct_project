@@ -66,7 +66,7 @@
 <script setup>
 import { ref, onMounted} from 'vue';
 import axios from 'axios';
-import auth from '../../../authService';
+import auth from '../../authService';
 
 const newStudent = ref({
   first_name: '',
@@ -84,7 +84,7 @@ const classOptions = ref([]);
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/classes/');
+    const response = await axios.get('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/classes/');
     classOptions.value = response.data.data; // Assuming the API response is an array of objects with 'id' and 'name' properties
   } catch (error) {
     console.error('Error fetching class options:', error);
@@ -117,7 +117,7 @@ const addStudent = async () => {
     }
 
     // User successfully signed up, you can proceed to add student to the API or perform other actions
-    await axios.post('http://127.0.0.1:8000/students/', newStudent.value);
+    await axios.post('https://schoolmanagementapi-46c1c75befdd.herokuapp.com/students/', newStudent.value);
 
     // Assuming the API response contains student data
     alert('Student added successfully');
